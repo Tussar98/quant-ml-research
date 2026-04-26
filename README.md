@@ -1,6 +1,6 @@
 # Quant ML Research
 
-[![CI](https://github.com/USERNAME/quant-ml-research/actions/workflows/ci.yml/badge.svg)](https://github.com/USERNAME/quant-ml-research/actions/workflows/ci.yml)
+[![CI](https://github.com/Tussar98/quant-ml-research/actions/workflows/ci.yml/badge.svg)](https://github.com/Tussar98/quant-ml-research/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org)
 [![Coverage](https://img.shields.io/badge/coverage-74%25-yellowgreen)](#testing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
