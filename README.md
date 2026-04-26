@@ -35,6 +35,7 @@ quant-ml walkforward --config configs/walkforward.yaml
 
 # Inspect the experiment runs
 mlflow ui   # → http://localhost:5000
+Or browse the executed research notebook directly: [notebooks/01_research_findings.ipynb](notebooks/01_research_findings.ipynb)
 ```
 
 That's it. Three commands and you have a tracked experiment with equity curves, fold-by-fold OOS metrics, and a buy-and-hold benchmark.
