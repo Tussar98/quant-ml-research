@@ -23,7 +23,7 @@ It deliberately fixes the methodological problems most "ML for trading" tutorial
 ## Quickstart
 
 ```bash
-git clone https://github.com/USERNAME/quant-ml-research.git
+git clone https://github.com/Tussar98/quant-ml-research.git
 cd quant-ml-research
 pip install -e ".[dev]"
 
