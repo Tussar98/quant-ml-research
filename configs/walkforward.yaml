@@ -1,0 +1,36 @@
+# Walk-forward ML experiment: train Random Forest classifier on technical features,
+# predict next-day direction, backtest the resulting signal stream.
+name: walkforward_rf_aapl
+description: |
+  Walk-forward Random Forest on AAPL 2010-2022.
+  5 expanding-window folds, 36mo train / 6mo test, 5-day embargo.
+
+data:
+  tickers: ["AAPL"]
+  start_date: 2010-01-01
+  end_date: 2022-12-31
+  cache_dir: data/cache
+
+backtest:
+  initial_capital: 100000
+  position_sizing: fixed_fractional
+  fraction: 0.95
+  costs:
+    commission_pct: 0.0005
+    slippage_bps: 2.0
+
+strategy:
+  name: ml_classifier
+  params: {}
+
+walkforward:
+  n_splits: 5
+  train_months: 36
+  test_months: 6
+  embargo_days: 5
+  model_type: random_forest
+  model_params:
+    n_estimators: 200
+    max_depth: 5
+
+mlflow_tracking_uri: file:./mlruns

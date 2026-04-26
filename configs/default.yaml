@@ -1,0 +1,27 @@
+# Baseline experiment: MA crossover on AAPL with realistic costs.
+name: ma_crossover_aapl
+description: |
+  Long-only 10/50 SMA crossover on AAPL, 2010-2022.
+  Includes 5bps commission + 2bps slippage.
+
+data:
+  tickers: ["AAPL"]
+  start_date: 2010-01-01
+  end_date: 2022-12-31
+  cache_dir: data/cache
+
+backtest:
+  initial_capital: 100000
+  position_sizing: fixed_fractional
+  fraction: 0.95
+  costs:
+    commission_pct: 0.0005   # 5 bps
+    slippage_bps: 2.0        # 2 bps
+
+strategy:
+  name: ma_crossover
+  params:
+    fast: 10
+    slow: 50
+
+mlflow_tracking_uri: file:./mlruns

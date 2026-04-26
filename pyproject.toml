@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quant-ml-research"
+version = "0.1.0"
+description = "Production-grade quantitative trading research framework with walk-forward ML validation."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Tussar Sarkar" }]
+license = { text = "MIT" }
+keywords = ["quantitative-finance", "machine-learning", "backtesting", "mlops"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "yfinance>=0.2.40",
+    "scikit-learn>=1.3",
+    "scipy>=1.11",
+    "statsmodels>=0.14",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    "mlflow>=2.10",
+    "joblib>=1.3",
+    "pyarrow>=14.0",  # parquet
+    "loguru>=0.7",
+    "click>=8.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "mypy>=1.8",
+    "pandas-stubs",
+    "types-PyYAML",
+]
+deploy = [  # Optional: for the FastAPI + Streamlit extension
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "streamlit>=1.32",
+]
+
+[project.scripts]
+quant-ml = "quant_ml.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --strict-markers --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]  # handled by formatter
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true

@@ -1,0 +1,23 @@
+# Ruff configuration overrides for this project.
+# Note: pyproject.toml has the same settings; this file makes them more
+# discoverable and lets us add per-path ignores cleanly.
+
+line-length = 100
+target-version = "py310"
+
+[lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = [
+    "E501",   # line length (handled by formatter)
+    "N803",   # uppercase argument names — sklearn convention uses X, y
+    "N806",   # uppercase variable names in functions — same reason
+    "B008",   # function calls in argument defaults — fine for simple cases
+]
+
+[lint.per-file-ignores]
+"tests/*" = ["S101"]   # asserts are how we test
+"scripts/*" = ["E402"]  # path manipulation before imports is intentional
+
+[format]
+quote-style = "double"
+indent-style = "space"
